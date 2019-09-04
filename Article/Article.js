@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Top Ten Top 100 Worst Films of All Time List of Lists List!",
+    date: "Tomorrow",
+    firstParagraph: "CLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICK",
+    secondParagraph: "BAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAIT",
+    thirdParagraph: "DODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDS",
   }
 ];
 
@@ -145,4 +152,6 @@ function createArticle({title, date, firstParagraph, secondParagraph, thirdParag
   return article;
 }
 
-data.map(createArticle);
+const articles = data.map(createArticle);
+const articlesDiv = document.querySelector(".articles");
+articles.forEach(article => articlesDiv.appendChild(article));
