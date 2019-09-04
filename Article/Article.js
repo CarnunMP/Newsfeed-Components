@@ -129,6 +129,11 @@ function createArticle({title, date, firstParagraph, secondParagraph, thirdParag
 
   const expandButton = document.createElement("span");
   expandButton.setAttribute("class", "expandButton")
+  expandButton.addEventListener("click", () => {
+    expandButton.getAttribute("class") === "article article-open" ? 
+      expandButton.setAttribute("class", "article") : 
+      expandButton.setAttribute("class", "article article-open");
+  });
 
   const elementsArray = [heading, pArray[0], pArray[1], pArray[2], pArray[3], expandButton];
 
@@ -136,7 +141,8 @@ function createArticle({title, date, firstParagraph, secondParagraph, thirdParag
   article.setAttribute("class", "article");
   elementsArray.forEach(element => article.appendChild(element));
 
+  console.log(article);
   return article;
 }
 
-console.log(createArticle(data[0]));
+data.map(createArticle);
