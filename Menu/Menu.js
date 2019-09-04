@@ -42,6 +42,7 @@ function createMenu(menuArray) {
   menuArray.forEach(menuItem => {
     const li = document.createElement("li");
     li.textContent = menuItem;
+    menuElement.appendChild(li);
   });
 
   
