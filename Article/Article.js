@@ -120,6 +120,9 @@ const data = [
 
 */
 function createArticle({title, date, firstParagraph, secondParagraph, thirdParagraph}) {
+  const article = document.createElement("div");
+  article.setAttribute("class", "article");
+
   const heading = document.createElement("h2");
   heading.textContent = title;
 
@@ -136,19 +139,25 @@ function createArticle({title, date, firstParagraph, secondParagraph, thirdParag
 
   const expandButton = document.createElement("span");
   expandButton.setAttribute("class", "expandButton")
+  expandButton.textContent = "Click to Expand";
   expandButton.addEventListener("click", () => {
-    expandButton.getAttribute("class") === "article article-open" ? 
-      expandButton.setAttribute("class", "article") : 
-      expandButton.setAttribute("class", "article article-open");
+    console.log(article.getAttribute("class"));
+    article.getAttribute("class") === "article article-open" ? 
+      article.setAttribute("class", "article") : 
+      article.setAttribute("class", "article article-open");
+    toggleButtonText(expandButton);
   });
+  function toggleButtonText(button) {
+    button.textContent === "Click to Expand" ?
+      button.textContent = "Click to Collapse" :
+      button.textContent = "Click to Expand";
+  }
 
   const elementsArray = [heading, pArray[0], pArray[1], pArray[2], pArray[3], expandButton];
 
-  const article = document.createElement("div");
-  article.setAttribute("class", "article");
   elementsArray.forEach(element => article.appendChild(element));
+  console.log(article.children);
 
-  console.log(article);
   return article;
 }
 
