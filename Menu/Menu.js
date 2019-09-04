@@ -45,10 +45,17 @@ function createMenu(menuArray) {
     menu.children[0].appendChild(li);
   });
 
-  let menuButton = document.querySelector(".menu-button");
+  const menuButton = document.querySelector(".menu-button");
   menuButton.addEventListener("click", () => {
-    // m
+    menu.getAttribute("class") === "menu" ?
+      menu.setAttribute("class", "menu--open") :
+      menu.setAttribute("class", "menu");
   });
+
+  return menu;
 }
 
-createMenu(menuItems);
+const menu = createMenu(menuItems);
+const header = document.querySelector(".header");
+header.insertBefore(menu, document.body.querySelector("h1"));
+
