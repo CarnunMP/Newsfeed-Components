@@ -56,6 +56,4 @@ function createMenu(menuArray) {
 }
 
 const menu = createMenu(menuItems);
-const header = document.querySelector(".header");
-header.insertBefore(menu, document.body.querySelector("h1"));
-
+document.querySelector(".articles").prepend(menu);
