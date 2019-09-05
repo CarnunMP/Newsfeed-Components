@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Top Ten Top 100 Worst Films of All Time List of Lists List!",
+    date: "Tomorrow",
+    firstParagraph: "CLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICKCLICK",
+    secondParagraph: "BAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAITBAIT",
+    thirdParagraph: "DODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDSDODGYADDS",
   }
 ];
 
@@ -112,3 +119,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function createArticle({title, date, firstParagraph, secondParagraph, thirdParagraph}) {
+  const article = document.createElement("div");
+  article.setAttribute("class", "article");
+
+  const heading = document.createElement("h2");
+  heading.textContent = title;
+
+  const pArray = [];
+  for (let i = 0; i < 4; i++) {
+    pArray.push(document.createElement("p"));
+  }
+  pArray[0].setAttribute("class", "date");
+  pArray[0].textContent = date;
+  const paragraphData = [firstParagraph, secondParagraph, thirdParagraph];
+  paragraphData.forEach((datum, index) => {
+    pArray[index + 1].textContent = datum;
+  });
+
+  const expandButton = document.createElement("span");
+  expandButton.setAttribute("class", "expandButton")
+  expandButton.textContent = "Click to Expand";
+  expandButton.addEventListener("click", () => {
+    console.log(article.getAttribute("class"));
+    article.getAttribute("class") === "article article-open" ? 
+      article.setAttribute("class", "article") : 
+      article.setAttribute("class", "article article-open");
+    toggleButtonText(expandButton);
+  });
+  function toggleButtonText(button) {
+    button.textContent === "Click to Expand" ?
+      button.textContent = "Click to Collapse" :
+      button.textContent = "Click to Expand";
+  }
+
+  const elementsArray = [heading, pArray[0], pArray[1], pArray[2], pArray[3], expandButton];
+
+  elementsArray.forEach(element => article.appendChild(element));
+  console.log(article.children);
+
+  return article;
+}
+
+const articles = data.map(createArticle);
+const articlesDiv = document.querySelector(".articles");
+articles.forEach(article => articlesDiv.appendChild(article));
